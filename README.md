@@ -116,6 +116,15 @@ rg -n -i "api[_-]?key|secret|token|password|bearer|authorization|license|lm_lice
 git status --ignored
 ```
 
+Validate helper scripts still run before pushing:
+
+```powershell
+python -m py_compile scripts\render_sprocess_cross_section.py scripts\extract_pdf_reference.py
+python scripts\render_sprocess_cross_section.py references\examples\minimal_oxidation_implant.cmd --analysis-out references\examples\minimal_oxidation_implant_analysis.md
+```
+
+If you later discover that secrets, private paths, or licensed material slipped in, remove them from the public branch, rotate any exposed credentials, and rewrite git history before sharing the repository more widely.
+
 ## Copyright And Trademarks
 
 This repository's original code and skill text are released under the MIT License. Third-party product names, including Synopsys and Sentaurus, are trademarks of their respective owners.

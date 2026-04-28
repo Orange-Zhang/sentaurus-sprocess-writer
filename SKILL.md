@@ -1,6 +1,6 @@
 ---
 name: sentaurus-sprocess-writer
-description: Write, modify, review, and troubleshoot Synopsys Sentaurus SProcess command decks using local SProcess syntax references. Use when Codex needs to generate SProcess .cmd files, translate process-flow intent into SProcess code, add implants/deposition/etch/diffusion/mesh/contact steps, adapt an existing process deck, or consult a provided SProcess PDF/manual converted into references.
+description: Write and edit Synopsys Sentaurus SProcess `.cmd` decks. Use when generating or modifying SProcess command files, translating process-flow intent into deck code (implants, deposition, etch, diffusion, mesh, contacts), or consulting local SProcess manual references.
 ---
 
 # Sentaurus SProcess Writer
@@ -16,7 +16,7 @@ Use this skill to write and edit Sentaurus SProcess command decks from process i
    - materials, masks, implants, thermal steps, etch/deposition steps
    - intended output structure/grid file for downstream SDevice or SVisual
 2. Inspect existing decks before generating new code. Preserve local naming conventions, units, mesh settings, comments, and output filenames.
-3. Inspect `references/examples/` for similar local decks, especially LDMOS process, device mesh, and contact patterns when the user has provided them.
+3. Inspect `references/examples/` for similar local decks when the user has placed them there (for example, LDMOS process, device mesh, or contact patterns). The public repository ships only synthetic demos; LDMOS-style examples are optional local inputs and may not be present.
 4. Search local SProcess manual references before using unfamiliar syntax. If `references/sprocess-user-guide/` is absent, ask the user to provide or extract their own licensed local reference.
 5. Generate conservative deck edits. Avoid inventing unsupported command options.
 6. Include comments that mark major process stages, but do not over-comment obvious one-line commands.
@@ -66,10 +66,10 @@ If local examples exist, cite the example file names when following their organi
 Run extraction:
 
 ```powershell
-& "C:\Program Files\Python313\python.exe" scripts\extract_pdf_reference.py --pdf <manual.pdf> --out references\sprocess-user-guide --prefix sprocess-ug
+python scripts\extract_pdf_reference.py --pdf <manual.pdf> --out references\sprocess-user-guide --prefix sprocess-ug
 ```
 
-The extractor needs either `pypdf` or `PyMuPDF` installed in the active Python environment.
+Adjust `python` to the interpreter on your `PATH` (or use an absolute path) as needed. The extractor needs either `pypdf` or `PyMuPDF` installed in the active Python environment.
 
 ## Writing Pattern
 
@@ -89,7 +89,7 @@ For a new deck, produce this structure unless the user gives a stronger local pa
 6. Remeshing/refinement if needed for junctions, interfaces, or downstream device simulation.
 7. Structure save/output statements.
 
-For LDMOS decks, prefer user-provided local examples in `references/examples/` over the generic structure above when they fit the user's target.
+For LDMOS decks, prefer user-provided local examples in `references/examples/` over the generic structure above when they fit the user's target. If no such local examples are present, fall back to the generic structure and note the assumption in the deck header.
 
 ## Review Checklist
 
