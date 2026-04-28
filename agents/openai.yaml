@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sentaurus SProcess Writer"
+  short_description: "Write SProcess decks from local references"
+  default_prompt: "Use $sentaurus-sprocess-writer to generate or revise a Sentaurus SProcess deck from my process-flow requirements and local syntax manual."

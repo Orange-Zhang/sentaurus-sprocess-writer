@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Generated helper outputs
+references/examples/*.svg
+references/examples/*_analysis.md
+references/examples/*.png
+
+# Local/proprietary manuals and extracted documentation
+references/sprocess-user-guide/
+references/source/
+*.pdf
+
+# Local official/proprietary example decks and notes.
+SProcess tamplate.txt
+DevMesh tamplate.txt
+LDMOS template.txt
+greadme.html
+greadme.pdf
+references/examples/ldmos_*
+
+# Local working context that can contain machine paths.
+PROJECT_CONTEXT.md
+
+# Sentaurus/TCAD generated artifacts
+*.tdr
+*.plx
+*.log
+*.cmd_des
+*.grd
+*.dat
+*.plt
+*.sat
+*_msh.cmd
+*_bnd.tdr
+
